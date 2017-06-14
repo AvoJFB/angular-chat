@@ -1,3 +1,39 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div *ngIf="!isLoggedIn" id="userFormArea" class="row">
+    <div class="col-md-12">
+      <form (submit)="handleSubmitNewUser()" id="userForm">
+        <div class="form-group">
+          <label>Enter Username</label>
+          <input [(ngModel)]="newUser" name="newUser" class="form-control" id="username">
+          <br>
+          <input type="submit" class="btn btn-primary" value="Login">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="isLoggedIn" id="messageArea" class="row">
+    <div class="col-md-4">
+      <div class="well">
+        <h3>Online Users</h3>
+        <ul class="list-group" id="users">
+          <li class="list-group-item" *ngFor="let user of users">{{user.username}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="chat" id="chat">
+        <div *ngFor="let message of messages" class="well"><strong>{{message.author.username}}</strong>: {{message.msg}}</div>
+        <form (submit)="handleSubmitNewMessage()" id="message-form">
+          <div class="form-group">
+            <label>Enter Message</label>
+            <textarea [(ngModel)]="msg" name="msg" class="form-control" id="message"></textarea>
+            <br>
+            <input type="submit" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
