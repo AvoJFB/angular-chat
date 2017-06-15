@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.use('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 io.on('connection', (socket) => {
