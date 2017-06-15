@@ -9,14 +9,13 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "preinstall": "npm install -g angular-cli",
-    "postinstall": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
+    "@angular/cli": "*",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
