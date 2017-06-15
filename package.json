@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node ./server/server.js",
-    "server": "node ./server/server.js",
-    "build": "ng build && node ./server/server.js",
+    "start": "ng build && node ./src/server.js",
+    "server": "node ./src/server.js",
+    "build": "ng build && node ./src/server.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
