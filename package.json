@@ -4,16 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node ./src/server.js",
-    "server": "node ./src/server.js",
-    "build": "ng build && node ./src/server.js",
+    "start": "node ./src/server.js",
+    "server": "ng build && node ./src/server.js",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "preinstall": "npm install -g ng",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
-    "ng": "*",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
