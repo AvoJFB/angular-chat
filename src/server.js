@@ -20,22 +20,27 @@ app.use('/', function(req, res, next) {
 io.on('connection', (socket) => {
   connections.push(socket);
   console.log(`Connected. Total: ${connections.length}`);
-  socket.emit('send-users', users);
+  socket.emit('update-users', users);
 
   socket.on('send-message', (data) => {
     console.log(data.msg);
     io.emit('message-received', data);
   });
 
-  socket.on('new-user', (data) => {
-    console.log(data.username);
-    users.push(data);
-    io.emit('user-received', data);
+  socket.on('new-user', (user) => {
+    console.log(user.username);
+    socket.username = user.username;
+    users.push(socket.username);
+    io.emit('update-users', users);
+    console.log(`Connected ${socket.username}. All users: ${users}`);
   });
 
-  socket.on('disconnect', (socket) => {
+  socket.on('disconnect', () => {
+    console.log(`Disconnecting ${socket.username}. Total: ${connections.length}`);
+    users.splice(users.indexOf(socket.username), 1);
+    console.log(`Disconnected ${socket.username}. All users: ${users}`);
     connections.splice(connections.indexOf(socket), 1);
-    console.log(`Disconnected. Total: ${connections.length}`);
+    io.emit('update-users', users);
   });
 });
 

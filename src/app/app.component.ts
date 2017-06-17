@@ -25,11 +25,7 @@ export class AppComponent implements OnInit {
       this.messages.push(msg);
     });
 
-    this.socketService.on('user-received', (user: any) => {
-      this.users.push(user);
-    });
-
-    this.socketService.on('send-users', (users: any) => {
+    this.socketService.on('update-users', (users: any) => {
       this.users = users;
     });
   }
